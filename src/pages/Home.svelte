@@ -39,6 +39,7 @@
       filteredNotes = [];
     }
   }
+  
   onMount(async () => {
     await notes.load($filters);
   });

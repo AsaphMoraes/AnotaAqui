@@ -5,7 +5,7 @@
   import NoteView from './pages/NoteView.svelte';
   import NoteForm from './pages/NoteForm.svelte';
 
-  $: route = $currentRoute;
+  const route = $derived($currentRoute);
 </script>
 
 <div class="app">
