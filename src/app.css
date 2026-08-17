@@ -1,0 +1,102 @@
+/* Variáveis CSS para temas e tamanhos */
+:root {
+  --color-primary: #005A9C;
+  --color-primary-dark: #004080;
+  --color-surface: #F5F5F5;
+  --color-surface-dark: #1E1E1E;
+  --color-text: #111111;
+  --color-text-light: #E0E0E0;
+  --color-error: #D32F2F;
+  --color-success: #2E7D32;
+  --font-family: 'Roboto', sans-serif;
+  --font-size-base: 16px; /* base para cálculo */
+  --spacing-unit: 8px;
+  --border-radius: 12px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.12);
+  --touch-target: 44px; /* mínimo WCAG */
+}
+
+/* Reset e base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--font-size-base);
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  line-height: 1.5;
+  padding: 0;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ajustes responsivos por largura de tela */
+/* Telas muito pequenas (ex: iPhone SE) */
+@media (max-width: 374px) {
+  :root {
+    --font-size-base: 14px;
+    --spacing-unit: 6px;
+    --touch-target: 40px;
+  }
+}
+
+/* Telas médias (ex: iPhone 6/7/8, Android 360-390) */
+@media (min-width: 375px) and (max-width: 413px) {
+  :root {
+    --font-size-base: 15px;
+  }
+}
+
+/* Telas grandes (ex: iPhone Plus, Pixel 4 XL) */
+@media (min-width: 414px) and (max-width: 767px) {
+  :root {
+    --font-size-base: 16px;
+    --spacing-unit: 10px;
+  }
+}
+
+/* Telas muito grandes (tablets) - mantém mobile */
+@media (min-width: 768px) {
+  :root {
+    --font-size-base: 18px;
+    --spacing-unit: 12px;
+  }
+  body {
+    max-width: 480px; /* centraliza conteúdo em tablets */
+    margin: 0 auto;
+  }
+}
+
+/* Utilitários de acessibilidade */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+.focus-visible:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Estilos de botão acessível */
+button, 
+[role="button"],
+input[type="submit"] {
+  min-height: var(--touch-target);
+  min-width: var(--touch-target);
+  touch-action: manipulation;
+  cursor: pointer;
+}
