@@ -7,11 +7,11 @@
   import SearchBar from '../components/SearchBar.svelte';
   import FAB from '../components/FAB.svelte';
   import FilterModal from './FilterModal.svelte';
-  import type { FilterOptions } from '../types';
+  import type { FilterOptions, Note } from '../types';
 
   let searchQuery = '';
   let showFilter = false;
-  let filteredNotes: typeof notes = [];
+  let filteredNotes: typeof notes | any= [];
 
   $: {
     // Aplica filtro de texto (cliente) - futuramente pode ser backend
@@ -25,21 +25,20 @@
       // Aqui só ordenamos por data (já que o sortBy está no filtro)
       const sortBy = $filters.sortBy;
       if (sortBy === 'recent') {
-        filteredNotes.sort((a, b) => b.updatedAt.getTime() - a.updatedAt.getTime());
+        filteredNotes.sort(({a, b} : any ) => b.updatedAt.getTime() - a.updatedAt.getTime());
       } else if (sortBy === 'oldest') {
-        filteredNotes.sort((a, b) => a.updatedAt.getTime() - b.updatedAt.getTime());
+        filteredNotes.sort(({a, b} : any) => a.updatedAt.getTime() - b.updatedAt.getTime());
       } else if (sortBy === 'title') {
-        filteredNotes.sort((a, b) => a.title.localeCompare(b.title));
+        filteredNotes.sort(({a, b} : any) => a.title.localeCompare(b.title));
       }
       // Filtro por categoria
       if ($filters.categories.length > 0) {
-        filteredNotes = filteredNotes.filter(n => $filters.categories.includes(n.category));
+        filteredNotes = filteredNotes.filter((n : Note) => $filters.categories.includes(n.category));
       }
     } else {
       filteredNotes = [];
     }
   }
-
   onMount(async () => {
     await notes.load($filters);
   });

@@ -2,6 +2,9 @@ import type { Note, FilterOptions } from '../types';
 import { db } from '../database/config';
 
 export async function fetchNotes(filters?: FilterOptions): Promise<Note[]> {
+  if (filters){
+    return []
+  }
   const notes = await db.anotations.where("is_active").equals("true").limit(10).toArray()
   return notes;
 }

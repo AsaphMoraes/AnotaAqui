@@ -25,7 +25,7 @@
     </span>
   </div>
   <p class="card-preview">{note.content.slice(0, 80)}...</p>
-  <time class="card-date">{formatDate(note.updatedAt)}</time>
+  <time class="card-date">{formatDate(note.updated_at)}</time>
 </div>
 
 <style>

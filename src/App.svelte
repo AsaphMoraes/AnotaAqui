@@ -19,8 +19,6 @@
     <NoteForm mode="add" />
   {:else if route === 'note-edit'}
     <NoteForm mode="edit" />
-  {:else}
-    <p>Nada bom</p>
   {/if}
 </div>
 
