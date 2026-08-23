@@ -1,2 +1,2 @@
 # AnotaAqui
-Aplicativo Web multiplataforma para gerenciamento de anotações
+Aplicativo Web multiplataforma para gerenciamento de anotações.
