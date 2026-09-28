@@ -1,7 +1,7 @@
 import type { Response, Request } from "express"
-import { connection } from "@/db/connection"
+import { connection } from "@/utils/connection"
 import { PasswordIsValidy } from '@/utils/auth'
-import type { Users } from "@/db/types/tbUsers"
+import type { Users } from "@/types/Users"
 import { GenerateJWT } from "@/utils/jwt"
 
 export async function loginUser(req: Request, res: Response){
